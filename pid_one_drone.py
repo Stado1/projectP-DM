@@ -7,7 +7,7 @@ Example
 -------
 In a terminal, run as:
 
-    $ python pid.py
+    $ python3 pid_one_drone.py
 
 Notes
 -----
@@ -65,8 +65,8 @@ def run(
     H = .1
     H_STEP = .05
     R = .3
-    INIT_XYZS = np.array([[0, 0, 1]])
-    INIT_RPYS = np.array([[0, 0,  0]])
+    INIT_XYZS = np.array([[0, 0, 1]]) # starting coordinates
+    INIT_RPYS = np.array([[0, 0,  0]]) # starting orientation
 	
 
     #### Create trajectory ######################
@@ -79,7 +79,7 @@ def run(
     TARGET_POS = np.zeros((NUM_WP,3))
     
     for i in range(NUM_WP):
-    	with open("coordinates.txt", "r") as file:
+    	with open("goalCoordinates.txt", "r") as file:
     		variables = [float(line.strip()) for line in file]
     	TARGET_POS[i, :] = variables[0], variables[1], variables[2]
     	
@@ -124,7 +124,7 @@ def run(
         
         # Here are the coordinates read from the txt file
         for i in range(NUM_WP):
-    	    with open("coordinates.txt", "r") as file:
+    	    with open("goalCoordinates.txt", "r") as file:
     	        variables = [float(line.strip()) for line in file]
     	    TARGET_POS[i, :] = variables[0], variables[1], variables[2]
 
@@ -157,7 +157,15 @@ def run(
                        )
 
         #### Printout ##############################################
-        env.render()
+        #aap = env.render()
+        
+        ## Write info to currentCoordinates.txt ####################
+        #print(f"x = {env.pos[0, 0]:.2f}, y = {env.pos[0, 1]:.2f}, z = {env.pos[0, 2]:.2f}")
+        
+        with open("currentCoordinates.txt", "w") as file:
+        	file.write(f"{env.pos[0, 0]:.2f}\n")
+        	file.write(f"{env.pos[0, 1]:.2f}\n")
+        	file.write(f"{env.pos[0, 2]:.2f}\n")
 
         #### Sync the simulation ###################################
         if gui:
