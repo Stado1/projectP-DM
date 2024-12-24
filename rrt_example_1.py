@@ -12,11 +12,7 @@ if __name__ == "__main__":
     min_z, max_z = -5.0, 15.0
 
     obstacles = [
-        (4.0, 6.0, 4.0, 6.0, 4.0, 6.0),
-        (2.0, 3.0, 5.0, 7.0, 1.0, 3.0),
-        (7.0, 9.0, 2.0, 4.0, 3.0, 5.0),
-        (5.0, 7.0, 8.0, 10.0, 2.0, 4.0),
-        (8.0, 10.0, 6.0, 8.0, 5.0, 7.0)
+        (0.0, 10.0, 5.0, 6.0, 0.0, 10.0)
     ]
 
     # Run RRT
@@ -35,8 +31,14 @@ if __name__ == "__main__":
 
     if path is not None:
         print("Path found:")
-        for waypoint in path:
-            print(waypoint)
+        #for waypoint in path:
+            #print(waypoint)
+            
+        # deletes all the old waypoints from the file and then 
+        # adds all the new waypoints to the "route.txt" file
+        with open("route.txt", "w") as file:
+            for waypoint in path:
+                file.write(f"{waypoint}\n")
         
         # Plot with matplotlib
         plot_rrt_3d(path, start_coord, end_coord, obstacles,
