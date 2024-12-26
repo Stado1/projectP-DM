@@ -4,7 +4,7 @@ from plotting.plot_rrt_3d_interactive import plot_rrt_3d_interactive
 
 if __name__ == "__main__":
     # Define parameters
-    start_coord = (0.0, 0.0, 0.0)
+    start_coord = (0.0, 0.0, 1.0)
     end_coord = (10.0, 10.0, 10.0)
 
     min_x, max_x = -5.0, 15.0

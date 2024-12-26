@@ -42,7 +42,7 @@ DEFAULT_USER_DEBUG_GUI = False
 DEFAULT_OBSTACLES = True
 DEFAULT_SIMULATION_FREQ_HZ = 240
 DEFAULT_CONTROL_FREQ_HZ = 48
-DEFAULT_DURATION_SEC = 60
+DEFAULT_DURATION_SEC = 600
 DEFAULT_OUTPUT_FOLDER = 'results'
 DEFAULT_COLAB = False
 
@@ -125,7 +125,11 @@ def run(
         # Here are the coordinates read from the txt file
         for i in range(NUM_WP):
     	    with open("goalCoordinates.txt", "r") as file:
-    	        variables = [float(line.strip()) for line in file]
+    	        newVariables = [float(line.strip()) for line in file if line.strip()]
+    	    		
+    	    if newVariables:
+    	    	variables = newVariables
+    	    	
     	    TARGET_POS[i, :] = variables[0], variables[1], variables[2]
 
         #### Make it rain rubber ducks #############################
