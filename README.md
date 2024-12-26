@@ -27,17 +27,17 @@ The "droneController.py" will look at the next waypoint and send those coordinat
 
 ## What needs to be done
 
-- The rrt\_example\_1.py code can sometimes create a route that goes too close to the ground. This code needs to be adjusted such that there is a minumum value for z-coordinate where every waypoint needs to be above.
+1. The rrt\_example\_1.py code can sometimes create a route that goes too close to the ground. This code needs to be adjusted such that there is a minumum value for z-coordinate where every waypoint needs to be above.
 
-- Find a way to adjust the speed of the drone.
+2. Find a way to adjust the speed of the drone.
 
-- Create visualisation in the environment of where each waypoint is.
+3. Create visualisation in the environment of where each waypoint is.
 
-- Find a way to randomly generate locations for obstacles and then load those abstacles into the environment and into the route planner.
+4. Find a way to randomly generate locations for obstacles and then load those abstacles into the environment and into the route planner.
 
-- Find a way to change the position of the camera in the environment.
+5. Find a way to change the position of the camera in the environment.
 
-- Find a way to reduce the allowable error in "droneController.py".
+6. Find a way to reduce the allowable error in "droneController.py".
 
 
 
