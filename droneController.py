@@ -26,39 +26,54 @@ def writeCoordinates(coordinates):
 		for coord in coordinates:
 			file.write(f"{coord}\n")
 			
-			
+# Read the coordinates of where the robot currently is from currentCoordinates.txt		
 def readCurrentCoordinates():
 	file_name = "currentCoordinates.txt"
 	
 	with open(file_name, 'r') as file:
 		lines = file.readlines()
 		return [float(line.strip()) for line in lines]
+		
+		
 	
+# calculate the distance between 2 points in a 3d space	
+def calculateDistance(gCoord, cCoord):
+	return ((gCoord[0] - cCoord[0]) * (gCoord[0] - cCoord[0]) +
+			(gCoord[1] - cCoord[1]) * (gCoord[1] - cCoord[1]) +
+			(gCoord[2] - cCoord[2]) * (gCoord[2] - cCoord[2])) ** 0.5
 	
 	
 def main():
-	goalCoords = readGoalCoordinates()
-	error = 0.55
+	goalCoords = readGoalCoordinates() 
+	error = 0.15 # this is the maximum allowable distance between the drone position and the waypoint position
 	
+	# loop trough all the waypoints
 	for gCoord in goalCoords:
 		writeCoordinates(gCoord)
 		cCoord = []
-		#print("c = ", cCoord, ",   g = ", gCoord)
 		
+		# sometimes the coordinates are not read correctly so this ensures that they will be read again until they are read correctly
 		while len(cCoord) < 3:
 			cCoord = readCurrentCoordinates()
-			print("c = ", cCoord, ",   g = ", gCoord)
+			#print("c = ", cCoord, ",   g = ", gCoord)
 				
+		distance = calculateDistance(gCoord, cCoord)
+		print("c = ", cCoord, ",   g = ", gCoord)
+		print(distance)
 		
-		while ((abs(gCoord[0] - cCoord[0]) > error) or (abs(gCoord[1] - cCoord[1]) > error) or (abs(gCoord[2] - cCoord[2]) > error)):
+		# keep looping until the drone is close enough to the target waypoint.
+		while (distance > error):
 		
+			cCoord = readCurrentCoordinates()
 			while len(cCoord) < 3:
 				cCoord = readCurrentCoordinates()
-				
-		
-			#time.sleep(0.5)
 			
-		time.sleep(1.0)
+			distance = calculateDistance(gCoord, cCoord)
+			print("c = ", cCoord, ",   g = ", gCoord)
+			print(distance)
+			time.sleep(0.1)
+		
+		time.sleep(0.1)
 		
 	
 if __name__ == "__main__":
