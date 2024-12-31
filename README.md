@@ -37,7 +37,7 @@ The "droneController.py" will look at the next waypoint and send those coordinat
 
 5. Find a way to change the position of the camera in the environment.
 
-6. Find a way to reduce the allowable error in "droneController.py".
+6. Find a way to reduce the allowable error in "droneController.py". - done, Stado
 
 
 
