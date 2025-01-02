@@ -54,7 +54,7 @@ def run(
         record_video=DEFAULT_RECORD_VISION,
         plot=DEFAULT_PLOT,
         user_debug_gui=DEFAULT_USER_DEBUG_GUI,
-        obstacles=None, #DEFAULT_OBSTACLES,
+        obstacles=DEFAULT_OBSTACLES,
         simulation_freq_hz=DEFAULT_SIMULATION_FREQ_HZ,
         control_freq_hz=DEFAULT_CONTROL_FREQ_HZ,
         duration_sec=DEFAULT_DURATION_SEC,
@@ -65,7 +65,7 @@ def run(
     H = .1
     H_STEP = .05
     R = .3
-    INIT_XYZS = np.array([[0, 0, 1]]) # starting coordinates
+    INIT_XYZS = np.array([[0, 0, 5]]) # starting coordinates
     INIT_RPYS = np.array([[0, 0,  0]]) # starting orientation
 	
 
@@ -99,7 +99,7 @@ def run(
                         ctrl_freq=control_freq_hz,
                         gui=gui,
                         record=record_video,
-                        obstacles=None, #obstacles,
+                        obstacles=obstacles,
                         user_debug_gui=user_debug_gui
                         )
 

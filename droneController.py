@@ -3,7 +3,9 @@ import time
 import math
 import random
 import numpy as np
+import pybullet as p
 import matplotlib.pyplot as plt
+from gym_pybullet_drones.envs.BaseAviary import BaseAviary
 
 # read coordinates from the route.txt file and return them as a list
 def readGoalCoordinates():
@@ -41,6 +43,8 @@ def calculateDistance(gCoord, cCoord):
 	return ((gCoord[0] - cCoord[0]) * (gCoord[0] - cCoord[0]) +
 			(gCoord[1] - cCoord[1]) * (gCoord[1] - cCoord[1]) +
 			(gCoord[2] - cCoord[2]) * (gCoord[2] - cCoord[2])) ** 0.5
+			
+					
 	
 	
 def main():
@@ -74,6 +78,7 @@ def main():
 			time.sleep(0.1)
 		
 		time.sleep(0.1)
+		
 		
 	
 if __name__ == "__main__":
