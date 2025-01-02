@@ -31,7 +31,7 @@ The "droneController.py" will look at the next waypoint and send those coordinat
 
 2. Find a way to adjust the speed of the drone.
 
-3. Create visualisation in the environment of where each waypoint is.
+3. Create visualisation in the environment of where each waypoint is. - done, Stado
 
 4. Find a way to randomly generate locations for obstacles and then load those abstacles into the environment and into the route planner.
 

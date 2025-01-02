@@ -3,7 +3,7 @@ import time
 import math
 import random
 import numpy as np
-#import pybullet as p
+import pybullet as p
 import matplotlib.pyplot as plt
 from gym_pybullet_drones.envs.BaseAviary import BaseAviary
 
@@ -51,6 +51,7 @@ def main():
 	goalCoords = readGoalCoordinates() 
 	error = 0.15 # this is the maximum allowable distance between the drone position and the waypoint position
 	
+	
 	# loop trough all the waypoints
 	for gCoord in goalCoords:
 		writeCoordinates(gCoord)
@@ -78,6 +79,8 @@ def main():
 			time.sleep(0.1)
 		
 		time.sleep(0.1)
+		
+		
 		
 		
 	
