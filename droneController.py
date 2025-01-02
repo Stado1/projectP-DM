@@ -3,7 +3,7 @@ import time
 import math
 import random
 import numpy as np
-import pybullet as p
+#import pybullet as p
 import matplotlib.pyplot as plt
 from gym_pybullet_drones.envs.BaseAviary import BaseAviary
 

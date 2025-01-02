@@ -27,6 +27,7 @@ The "droneController.py" will look at the next waypoint and send those coordinat
 
 ## What needs to be done
 
+1. Cuurently "rrt\_example\_1.py" does not work propely it still gives routes that go trough obstacles
 
 2. Find a way to adjust the speed of the drone.
 
