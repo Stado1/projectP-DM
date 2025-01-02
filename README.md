@@ -4,7 +4,7 @@
 
 1. Activate the drones anvironment by typing: "conda activate drones" in the terminal.
 
-2. Reset the current position by changing the coordinates in "goalCoordinates.txt" to 0.0, 0.0, 1.0.
+2. Reset the current position by changing the coordinates in "goalCoordinates.txt" to 0.0, 0.0, 5.0.
 
 3. Create a path for the drone to follow by running in a terminal: "python3 rrt\_example\_1.py". (This is optional because sometimes the route that this file will create is not possible because the drone will fly too close too the ground and crash. The route that is currently in route.txt is a route that the drone can follow without crashing.)
 
