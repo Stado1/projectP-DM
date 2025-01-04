@@ -38,7 +38,7 @@ DEFAULT_PHYSICS = Physics("pyb")
 DEFAULT_GUI = True
 DEFAULT_RECORD_VISION = False
 DEFAULT_PLOT = True
-DEFAULT_USER_DEBUG_GUI = False
+DEFAULT_USER_DEBUG_GUI = True
 DEFAULT_OBSTACLES = True
 DEFAULT_SIMULATION_FREQ_HZ = 240
 DEFAULT_CONTROL_FREQ_HZ = 48
@@ -65,7 +65,7 @@ def run(
     H = .1
     H_STEP = .05
     R = .3
-    INIT_XYZS = np.array([[0, 0, 5]]) # starting coordinates
+    INIT_XYZS = np.array([[0, 0, 1]]) # starting coordinates
     INIT_RPYS = np.array([[0, 0,  0]]) # starting orientation
 	
 
@@ -119,40 +119,8 @@ def run(
 
 
     #### Load all the obstacles ################################
-    obstacle1 = p.loadURDF("cube_no_rotation.urdf",
-                   [2.5, 0, 5],
-                   p.getQuaternionFromEuler([0, 0, 0]),
-                   #physicsClientId=self.CLIENT,
-                   globalScaling=1.0
-                   )
-    obstacle2 = p.loadURDF("cube_no_rotation.urdf",
-                   [4.5, 0, 4],
-                   p.getQuaternionFromEuler([0, 0, 0]),
-                   #physicsClientId=self.CLIENT,
-                   globalScaling=1.0
-                   )
-    obstacle3 = p.loadURDF("cube_no_rotation.urdf",
-                   [2.5, 1.5, 5],
-                   p.getQuaternionFromEuler([0, 0, 0]),
-                   #physicsClientId=self.CLIENT,
-                   globalScaling=1.0
-                   )
-    obstacle4 = p.loadURDF("cube_no_rotation.urdf",
-                   [2.5, 0, 6.5],
-                   p.getQuaternionFromEuler([0, 0, 0]),
-                   #physicsClientId=self.CLIENT,
-                   globalScaling=1.0
-                   )
-    obstacle5 = p.loadURDF("cube_no_rotation.urdf",
-                   [2.5, -1.5, 5],
-                   p.getQuaternionFromEuler([0, 0, 0]),
-                   #physicsClientId=self.CLIENT,
-                   globalScaling=1.0
-                   )
-
-
-    #### Load visuals at waypoints #############################
-    # function to load all the waypoints
+    
+    # this is a function to load coordinates from text files
     def parseCoordinates(filePath):
         coords = []
         with open(filePath, 'r') as file:
@@ -162,17 +130,34 @@ def run(
                     coord = line[1:-1].split(",")
                     coords.append(tuple(map(float, coord)))
         return coords
+        
+    # load the locations for the obstalces from txt file
+    coordinatesObstacles = parseCoordinates("obsLocationRandom.txt")
+    
+    # loop trough the coordinates and load an obtsacle at each point
+    for coord in coordinatesObstacles:
+        x, y, z = coord
+        obstacle = p.loadURDF("cube.urdf",
+                   [x, y, z],
+                   useFixedBase=True,
+                   globalScaling=0.95,
+                   )
+        p.changeVisualShape(obstacle, -1, rgbaColor=[1,0,0,0.3])
+        p.setCollisionFilterGroupMask(obstacle, -1, collisionFilterGroup=1, collisionFilterMask=2)
+
+
+    #### Load visuals at waypoints #############################
     
     # store all waypoints in a variable
-    coordinates = parseCoordinates("route.txt")
+    coordinatesWaypoints = parseCoordinates("route.txt")
     
     #loop trough all the waypoints and place visuals at each point
-    for i, coord in enumerate(coordinates):
+    for i, coord in enumerate(coordinatesWaypoints):
         x, y, z = coord
-        if i == len(coordinates) - 1: # visual for the final waypoint
-            sphereEnd = p.loadURDF("sphere2.urdf", [x, y, z], useFixedBase=True, globalScaling=0.1)
-            p.setCollisionFilterGroupMask(sphereEnd, -1, collisionFilterGroup=0, collisionFilterMask=0)
-            p.changeVisualShape(sphereEnd, -1, rgbaColor=[1,0,0,0.75])
+        if i == len(coordinatesWaypoints) - 1: # visual for the final waypoint
+            endPoint = p.loadURDF("cube.urdf", [x, y, z], useFixedBase=True, globalScaling=0.1)
+            p.setCollisionFilterGroupMask(endPoint, -1, collisionFilterGroup=0, collisionFilterMask=0)
+            p.changeVisualShape(endPoint, -1, rgbaColor=[0,1,0,0.9])
         else: # visuals for all other waypoints
             waypointCube = p.loadURDF("cube.urdf", [x, y, z], useFixedBase=True, globalScaling=0.05)
             p.setCollisionFilterGroupMask(waypointCube, -1, collisionFilterGroup=0, collisionFilterMask=0)

@@ -59,4 +59,4 @@ def plot_rrt_3d_interactive(path, start, goal, obstacles,
         showlegend=True
     )
 
-    fig.show()
+    fig.show(renderer="browser")

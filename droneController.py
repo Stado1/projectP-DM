@@ -3,9 +3,9 @@ import time
 import math
 import random
 import numpy as np
-import pybullet as p
+#import pybullet as p
 import matplotlib.pyplot as plt
-from gym_pybullet_drones.envs.BaseAviary import BaseAviary
+#from gym_pybullet_drones.envs.BaseAviary import BaseAviary
 
 # read coordinates from the route.txt file and return them as a list
 def readGoalCoordinates():
