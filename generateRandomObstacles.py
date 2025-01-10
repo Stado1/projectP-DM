@@ -4,7 +4,7 @@ coordinates = []
 
 
 # define the amount of obstacles in the environment
-numOfObstacles = 25
+numOfObstacles = 15
 
 # generate locations for each obstacle
 for _ in range(numOfObstacles):

@@ -21,6 +21,9 @@ Note: sometimes the route that is created by "rrt\_example\_1.py" will be invali
 I had a problem with adjusting the camera in the simulation where i can only zoom in and out but not move the position of the camera.
 If you also have this problem you can open the file: 'gym-pybullet-drones/gym-pybullet-drones/envs/BaseAviary.py'. On lines 153 till 158, at p.resetDebugVisualizerCamera you can change the coordinates of the camera. If you set the distance=1, yaw=-45, pitch=35 and the coordinates to (-1, -1, 0) then you can follow the drone by just zooming in and out.
 
+### Simulation running slowly
+If the simulation is running very slow and lagging a lot then go to the "droneController.py" file and uncomment the lines 79 and 81. (the lines that contain "time.sleep(0.1)")
+
 
 ## How it works
 The 'runRandomTest.sh' script will first reset the current values for "goalCoordinates.txt".
@@ -35,19 +38,7 @@ The "droneController.py" will look at the next waypoint and send those coordinat
 
 
 
-## What needs to be done
 
-1. Cuurently "rrt\_example\_1.py" does not work propely it still gives routes that go trough obstacles
-
-2. Find a way to adjust the speed of the drone.
-
-3. Create visualisation in the environment of where each waypoint is. - done, Stado
-
-4. Find a way to randomly generate locations for obstacles and then load those abstacles into the environment and into the route planner. - done, Stado
-
-5. Find a way to change the position of the camera in the environment. - Could not find a way to change the position of the camera during simulation but I have positioned the camera in a position where everything is visible, Stado
-
-6. Find a way to reduce the allowable error in "droneController.py". - done, Stado
 
 
 

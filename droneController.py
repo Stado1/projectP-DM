@@ -76,9 +76,9 @@ def main():
 			distance = calculateDistance(gCoord, cCoord)
 			print("c = ", cCoord, ",   g = ", gCoord)
 			print(distance)
-			time.sleep(0.1)
+#			time.sleep(0.1)
 		
-		time.sleep(0.1)
+#		time.sleep(0.1)
 		
 		
 		

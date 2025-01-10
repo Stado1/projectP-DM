@@ -164,6 +164,7 @@ def run(
             p.changeVisualShape(waypointCube, -1, rgbaColor=[1,1,0,0.5])
             
 
+    print("All obstacles and waypoints are loaded.")
     #### Run the simulation ####################################
     action = np.zeros((num_drones,4))
     START = time.time()
