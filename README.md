@@ -26,15 +26,11 @@ If the simulation is running very slow and lagging a lot then go to the "droneCo
 
 
 ## How it works
-The 'runRandomTest.sh' script will first reset the current values for "goalCoordinates.txt".
+The simulation works by first generating random locations for the obstacles, this is done by "generateRandomObstacle.py". These coordinates are written to the text file "obsLocationRandom.txt". The obstacle coordinates are then read by "rrt\_example\_1.py" and this python file will then create a path around those obstacles. This is done by creating waypoints close to each other and connecting these waypoints to form a path. These waypoints are stored in "route.txt". 
+The "pid\_one\_drone.py" is then started which will start the environment and read the obstacle locations from "obsLocationRandom.txt" and place the obstacles in the environment, which are red see trough cubes. It will then read the waypoint locations from "route.txt" and place visualisations for each waypoint, which are small yellow cubes with the last waypoint being the finish which is a small green cube. It will also load in the drone.
+The python file "droneController.py" will iterate trough these waypoints. It will take the first waypoint and write them to "goalCoordinates.txt" this file is read by the python file "pid\_one\_drone.py" which will move the drone to that waypoint. Simultaneously, "pid\_one\_drone.py" is constantly writing the current location of the drone to "currentCoordinates.txt". This text file is also constantly read by "droneController.py" and when the drone is close enough to the waypoint, "droneController.py" will change the coordinates in "goalCoordinates.txt" to the coordinates of the next waypioints. These steps keep repeating until the drone reaches the final waypoint which is the end point.
 
-Then it will run the file "generateRandomObstacles.py", which will place obstacles in random locations in the environment
-
-After that it will run the file "rrt\_example\_1.py" which creates a path that consists of waypoints and stores all these waypoints into "route.txt".
-
-Then the script will start "pid\_one\_drone.py" which will open the environment and load in all the obstacles, waypoints and the final point. This code will also constantly write the current position of the drone to "currentCoordinate.txt". 
-
-The "droneController.py" will look at the next waypoint and send those coordinates to "goalCoordinates.txt", these coordinates will be read by "pid\_one\_drone.py" and the drone will then fly to those coordinates. Then "droneController.py" will constantly check if the drone has reached that waypoint by looking at the "currentCoordinates.txt" and comparing them to the coordinates of the current waypoint. Once the waypoint is reached the code will send the coordinates for the next waypoint and the cycle repeats. 
+A chart of this sumulation: ![alt text]([http://url/to/img.png](https://github.com/Stado1/projectP-DM/blob/main/SimulationSetup.png)
 
 
 
