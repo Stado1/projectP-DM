@@ -2,19 +2,23 @@
 
 ## How to use 
 
-1. Install 'projectP-DM' in 'gym-pybullet-drones/gym-pybullet-drones/examples/ .
+1. Install gym-pybullet-drones using the link: https://github.com/utiasDSL/gym-pybullet-drones.
 
-2. Open a terminal and go to the 'projectP-DM' folder. Activate the drones environment by typing: "conda activate drones" in the terminal.
+2. Install 'projectP-DM' in 'gym-pybullet-drones/gym-pybullet-drones/examples/ .
 
-3. Run the 'runRandomTest.sh' bash script. This script will put the obstacles at random positions, create a path trought the obstacles and then open the simulation environment. Running this script will first open a plot with the route, when you click this plot away then the simulation will start.
+3. Open a terminal and go to the 'projectP-DM' folder. Activate the drones environment by typing: "conda activate drones" in the terminal.
 
-4. Wait until everything is loaded in the simulation. (So each red obstacle, each yellow waypoint dot and the green finish dot. All in that order.)
+4. Choose how many obstacles you want in the environment by going to the file: 'generateRandomObstacles.py' in the 'projectP-DM' folder. In this file on line 7 there is a variable named "numOfObstacles" change this variable to the desired amount of obstacles, then save and close the file.
 
-5. Open a new terminal and go to the projectP-DM folder. Now run the drone control code by typing: "python3 droneController.py"
+5. Run the 'runRandomTest.sh' bash script. This script will put the obstacles at random positions, create a path trought the obstacles and then open the simulation environment. Running this script will first open a plot with the route, when you click this plot away then the simulation will start.
+
+6. Wait until everything is loaded in the simulation. (So each red obstacle, each yellow waypoint dot and the green finish dot. All in that order.) When you can see the text "All obstacles and waypoints are loaded" then everything is loaded.
+
+7. Open a new terminal and go to the projectP-DM folder. Now run the drone control code by typing: "python3 droneController.py"
 
 The drone should now follow the route that was created by the rrt\_example\_1.py code.
 
-Note: sometimes the route that is created by "rrt\_example\_1.py" will be invalid and the drone will crash, just repeat steps 3, 4 and 5 to create a new route.
+Note: sometimes the route that is created by "rrt\_example\_1.py" will be invalid and the drone will crash, just repeat steps 5, 6 and 7 to create a new route.
 
 
 ### Camera problem
