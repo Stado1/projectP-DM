@@ -37,7 +37,9 @@ The python file "droneController.py" will iterate trough these waypoints. It wil
 A chart of this sumulation: <img width="1030" alt="SimulationSetup" src="https://github.com/user-attachments/assets/72503225-03b0-4e87-9ca0-55626be9e63b" />
 
 
-
+## Video of the simulation
+Here a video of the simulation with 25 obstacles can be seen.
+https://www.youtube.com/watch?v=vupVMY2XAOM
 
 
 
