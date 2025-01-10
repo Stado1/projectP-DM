@@ -30,7 +30,8 @@ The simulation works by first generating random locations for the obstacles, thi
 The "pid\_one\_drone.py" is then started which will start the environment and read the obstacle locations from "obsLocationRandom.txt" and place the obstacles in the environment, which are red see trough cubes. It will then read the waypoint locations from "route.txt" and place visualisations for each waypoint, which are small yellow cubes with the last waypoint being the finish which is a small green cube. It will also load in the drone.
 The python file "droneController.py" will iterate trough these waypoints. It will take the first waypoint and write them to "goalCoordinates.txt" this file is read by the python file "pid\_one\_drone.py" which will move the drone to that waypoint. Simultaneously, "pid\_one\_drone.py" is constantly writing the current location of the drone to "currentCoordinates.txt". This text file is also constantly read by "droneController.py" and when the drone is close enough to the waypoint, "droneController.py" will change the coordinates in "goalCoordinates.txt" to the coordinates of the next waypioints. These steps keep repeating until the drone reaches the final waypoint which is the end point.
 
-A chart of this sumulation: ![alt text]([http://url/to/img.png](https://github.com/Stado1/projectP-DM/blob/main/SimulationSetup.png)
+A chart of this sumulation: <img width="1030" alt="SimulationSetup" src="https://github.com/user-attachments/assets/72503225-03b0-4e87-9ca0-55626be9e63b" />
+
 
 
 
