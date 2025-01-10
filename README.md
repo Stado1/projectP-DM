@@ -12,7 +12,7 @@
 
 5. Run the 'runRandomTest.sh' bash script. This script will put the obstacles at random positions, create a path trought the obstacles and then open the simulation environment. Running this script will first open a plot with the route, when you click this plot away then the simulation will start.
 
-6. Wait until everything is loaded in the simulation. (So each red obstacle, each yellow waypoint dot and the green finish dot. All in that order.) When you can see the text "All obstacles and waypoints are loaded" then everything is loaded.
+6. Wait until everything is loaded in the simulation. (So each red obstacle, each yellow waypoint dot and the green finish dot. All in that order.) When you can see the text "All obstacles and waypoints are loaded" in the terminal that means that everything is loaded.
 
 7. Open a new terminal and go to the projectP-DM folder. Now run the drone control code by typing: "python3 droneController.py"
 
